@@ -1,4 +1,3 @@
-require 'pry'
 class LearnBase
 
   GITHUB_ORG = 'https://api.github.com/repos/learn-co-curriculum/'
