@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'learn-tool'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = <<-EOBANNER
+
+    Learn-Tool
+    ====================
+    A tool for creating, cloning and repairing repositories. This tool has
+    three basic commands
+    
+    learn-tool create
+    learn-tool duplicate
+    learn-tool repair
+
+    When creating, you will need to provide a name of the repository you are
+    creating and choose from an existing template.
+
+    When duplicating, you will want the canonical name of a repository e.g.:
+    ruby-enumerables-enumerable-family-tree. You will also want to know the clone
+    name e.g snapshot-clone-enumerable-family-tree
+   
+  EOBANNER
+
+  opts.on("--create", "-c", "Create new repository"){ |v| options[:create] = true }
+  opts.on("--duplicate", "-d", "Clone from existing repository"){ |v| options[:duplicate] = true }
+  opts.on("--repair", "-r", "Fix current repository"){ |v| options[:repair] = true }
+end.parse!
+
+puts options
+
+if options[:create]
+    LearnTool.new("create")
+end
+
+if options[:duplicate]
+    LearnTool.new("duplicate")
+end
+
+if options[:repair]
+    LearnTool.new("repair")
+end
+
+
