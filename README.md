@@ -39,7 +39,7 @@ To create  a new repository, navigate to the folder where you'd like your
 repo to be duplicated locally and type:
 
 ```sh
-learn-tool create
+learn-tool --create
 ```
 
 Follow the prompts to create a blank readme, code-along or lab repository. The
@@ -59,7 +59,7 @@ For other lesson types, start with a Readme.
 To duplicate an existing repository, type:
 
 ```sh
-learn-tool duplicate
+learn-tool --duplicate
 ```
 
 This command will make an exact copy of another repository. For example, you
@@ -70,7 +70,7 @@ the configuration of an existing lab.
 consider creating a fork and submit a pull request on the **original lesson**
 rather than creating an altered duplicate.
 
-## Lesson Repair
+## Lesson Linting and Repair
 
 If you already have a repository or created one manually, it is important that
 certain files are present:
@@ -83,13 +83,30 @@ certain files are present:
 - `CONTRIBUTING.md` - This file contains information on how to contribute to our
   content.
 
+To check if these files are present and correct, from the lesson directory type:
+
+```sh
+learn-tool --lint
+```
+
+Alternatively, you can provide an absolute path to the directory you would like to lint:
+
+```sh
+learn-tool --lint /Users/johnboy/lessons/jukebox-cli
+```
+
 To quickly add or fix these files, type:
 
 ```sh
-learn-tool repair
+learn-tool --repair
 ```
 
-This command will replace or add the required files to the current repository.
+This command will replace or add the required files to the current repository. You can pass an absolute path of another directory you would like to repair:
+
+```sh
+learn-tool --repair /Users/johnboy/lessons/jukebox-cli
+```
+**Warning**: Repairing will overwrite any existing support files.
 
 ## Resources
 
