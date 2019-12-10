@@ -12,9 +12,10 @@ OptionParser.new do |opts|
     A tool for creating, cloning and repairing repositories. This tool has
     three basic commands
     
-    learn-tool create
-    learn-tool duplicate
-    learn-tool repair
+    learn-tool --create
+    learn-tool --duplicate
+    learn-tool --lint <optional: filepath>
+    learn-tool --repair <optional: filepath>
 
     When creating, you will need to provide a name of the repository you are
     creating and choose from an existing template.
@@ -25,23 +26,43 @@ OptionParser.new do |opts|
    
   EOBANNER
 
-  opts.on("--create", "-c", "Create new repository"){ |v| options[:create] = true }
-  opts.on("--duplicate", "-d", "Clone from existing repository"){ |v| options[:duplicate] = true }
-  opts.on("--repair", "-r", "Fix current repository"){ |v| options[:repair] = true }
+  opts.on("-c", "--create", 
+          "Create new repository") do |v| 
+            options[:create] = true
+          end
+  opts.on("-d", "--duplicate", 
+          "Clone from existing repository") do |v| 
+            options[:duplicate] = true 
+          end
+  opts.on("-l", "--lint [ABSOLUTE_FILEPATH]",
+          "Lint a directory given its absolute path. If blank, lints current directory") do |filepath| 
+            filepath ? options[:lint] = filepath : options[:lint] = Dir.pwd
+          end
+  opts.on("-r", "--repair [ABSOLUTE_FILEPATH]", 
+          "Add correct files to a directory given its absolute path. If blank, edits current directory") do |filepath| 
+            filepath ? options[:repair] = filepath : options[:repair] = Dir.pwd
+          end
+  
 end.parse!
 
 puts options
 
 if options[:create]
-    LearnTool.new("create")
+  LearnTool.new(mode: "create", filepath: Dir.pwd)
 end
 
 if options[:duplicate]
-    LearnTool.new("duplicate")
+  LearnTool.new(mode: "duplicate", filepath: Dir.pwd)
+end
+
+if options[:lint]
+  LearnTool.new(mode: "lint", filepath: options[:lint])
 end
 
 if options[:repair]
-    LearnTool.new("repair")
+  LearnTool.new(mode: "repair", filepath: options[:repair])
 end
 
-
+if options == {}
+  LearnTool.new(mode: "lint", filepath: Dir.pwd)
+end
