@@ -2,18 +2,13 @@ class LearnRepair < LearnBase
 
     def initialize(filepath)
       super(filepath)
-      cd_into_and(filepath, create_dot_learn_file)
+      cd_into_and(filepath, create_learn_file)
       cd_into_and(filepath, create_support_file("LICENSE.md"))
       cd_into_and(filepath, create_support_file("CONTRIBUTING.md"))
     end
 
-    def create_dot_learn_file
-    `
-cat > .learn <<- EOL
-languages:
-  - none
-EOL
-`
+    def create_learn_file
+      'echo "languages:" > .learn && echo "  - none" >> .learn'
     end
 
     def create_support_file(name_of_file)
