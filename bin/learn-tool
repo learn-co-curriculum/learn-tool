@@ -45,8 +45,6 @@ OptionParser.new do |opts|
   
 end.parse!
 
-puts options
-
 if options[:create]
   LearnTool.new(mode: "create", filepath: Dir.pwd)
 end

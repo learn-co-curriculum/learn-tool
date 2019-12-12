@@ -16,7 +16,7 @@ class LearnTool
   
 
   def initialize(mode:, filepath:Dir.pwd)
-    puts filepath
+    puts "Learn-tool will #{mode} at the following location: #{filepath}"
     if mode == 'create'
       LearnCreate.new(filepath)
     end
