@@ -1,9 +1,9 @@
 class ContributingLinter 
 
-    VALID_FILE = File.open(File.expand_path(File.dirname(__FILE__)) + '/support_files/CONTRIBUTING.md')
+    VALID_FILE = File.open(File.expand_path(File.dirname(__FILE__)) + '/support_files/CONTRIBUTING.md', "r:UTF-8")
   
     def self.parse_file(file, learn_error)
-      directory_file = sanitize_whitespace(File.open(file).read)
+      directory_file = sanitize_whitespace(File.open(file, "r:UTF-8").read)
       valid_file_array = sanitize_whitespace(VALID_FILE.read)
       diff = directory_file - valid_file_array
   
