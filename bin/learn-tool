@@ -42,6 +42,10 @@ OptionParser.new do |opts|
           "Add correct files to a directory given its absolute path. If blank, edits current directory") do |filepath| 
             filepath ? options[:repair] = filepath : options[:repair] = Dir.pwd
           end
+  opts.on("-v", "--version", 
+          "Returns the current learn-tool version") do |v| 
+            options[:version] = true 
+          end
   
 end.parse!
 
@@ -59,6 +63,10 @@ end
 
 if options[:repair]
   LearnTool.new(mode: "repair", filepath: options[:repair])
+end
+
+if options[:version]
+  LearnTool.new(mode: "version", filepath: Dir.pwd)
 end
 
 if options == {}

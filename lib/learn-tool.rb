@@ -1,6 +1,7 @@
 require 'faraday'
 require 'uri'
 require 'open3'
+require_relative './learn-tool/version'
 require_relative './learn-tool/learn-base'
 require_relative './learn-tool/learn-repair'
 require_relative './learn-tool/learn-create'
@@ -13,9 +14,13 @@ require_relative './learn-tool/yaml-linter'
 require_relative './learn-tool/contributing-linter'
 
 class LearnTool
-  
 
   def initialize(mode:, filepath:Dir.pwd)
+    if mode == 'version'
+      puts VERSION
+      return
+    end
+
     puts "Learn-tool will #{mode} at the following location: #{filepath}"
     if mode == 'create'
       LearnCreate.new(filepath)
@@ -32,6 +37,8 @@ class LearnTool
     if mode == 'lint'
       LearnLinter.new(filepath).lint_directory
     end
+
+    
   end
 
  
