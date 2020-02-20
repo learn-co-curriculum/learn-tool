@@ -9,10 +9,10 @@ possible.
 ## Raising an Issue to Encourage a Contribution
 
 If you notice a problem with the curriculum that you believe needs improvement
-but you're unable to make the change yourself, you should raise a Github issue
+, but you're unable to make the change yourself, you should raise a Github issue
 containing a clear description of the problem. Include relevant snippets of the
-content and/or screenshots if applicable. Curriculum owners regularly review
-issue lists and your issue will be prioritized and addressed as appropriate.
+content and screenshots if applicable. Curriculum owners regularly review
+issue lists, and your issue will be prioritized and addressed as appropriate.
 
 ## Submitting a Pull Request to Suggest an Improvement
 
@@ -26,7 +26,7 @@ ahead and use a typical git workflow to make it happen:
 A curriculum owner will review your change and approve or comment on it in due
 course.
 
-# Why Contribute?
+## Why Contribute?
 
 Curriculum on Learn is publicly and freely available under Learn's
 [Educational Content License](https://learn.co/content-license). By embracing an
