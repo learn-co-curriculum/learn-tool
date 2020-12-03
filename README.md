@@ -14,9 +14,8 @@ Once `hub` is installed, you'll need to get it configured before running
 `learn-tool`. The best way to do this is to use `hub` once to create a
 repository on learn-co-curriculum. In the shell:
 
-- Create a new, empty folder and `cd` into it
-- Run `git init` to initialize git
-- Run `hub create learn-co-curriculum/<whatever-name-you've-chosen>`
+- Navigate to an existing local git repo
+- - Run `hub browse`
   - You should be prompted to sign in to GitHub
   - **Note:** If you have set up two-factor identification on GitHub, when
     prompted for your password, you have two options:
@@ -24,8 +23,7 @@ repository on learn-co-curriculum. In the shell:
     - Otherwise, instead of using your normal password, you
       need to enter a Personal Access Token. You can create a token in your
       GitHub settings page.
-- If everything works as expected you should now have an empty `learn-co-curriculum` repo.
-- Delete the repo, please. Everything should be set up now.
+- If everything works as expected you should see the remote GitHub repo open in browser
 
 Install the `learn-tool` gem:
 
